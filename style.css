@@ -1,0 +1,519 @@
+/* @import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css"); */
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.1;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 700;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+h1 {
+    font-size: 2.35em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    max-width: inherit;
+    background: whitesmoke;
+    color: #4a4a4a;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.box-1 {
+    flex: 0 0 20px;
+    padding: 0 10px;
+    order: -1;
+}
+
+.box-2 {
+    flex: 2;
+    padding: 0 0px;
+}
+
+.cover-img {
+    position: relative;
+}
+
+.image-1 {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-bottom: 0px;
+}
+
+.image-2 {
+    position: absolute;
+    z-index: 2;
+    top: 230px;
+    left: 100px;
+    border: 3.5px ridge whitesmoke;
+    border-radius: 2px;
+    padding: 5px;
+    width: 240px;
+}
+
+.container-2 {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-direction: row;
+    padding-left: 69px;
+    padding-right: 2px;
+}
+
+.box-2-1 {
+    flex: 0 0 10px;
+    flex: 2;
+    padding: 0 0px;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.box-2-2 {
+    flex: 0px;
+    padding: 10px 90px;
+    order: 2;
+    flex-direction: column;
+}
+
+
+
+/* The navigation bar */
+.nav {
+    background: whitesmoke;
+    height: 60px;
+    /* set same as height & line-height below */
+}
+
+/* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
+.nav li {
+    display: inline-block;
+    list-style: square;
+    height: 60px;
+    /* should be the same as line-height */
+    line-height: 60px;
+    /* should be the same as height */
+    padding: 0 40px;
+    /* "0" sets top and bottom padding to none */
+    font-family: 'Allerta Stencil', sans-serif;
+    font-weight: 1000;
+}
+
+/* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
+.nav li:hover {
+    background: #FC466B;
+    transition: background .3s;
+}
+
+/* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
+.nav-link {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+/* Side Bar */
+.menu,
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+}
+
+.menu li a {
+    display: block;
+    text-indent: -500em;
+    height: 5em;
+    width: 5em;
+    line-height: 5em;
+    text-align: center;
+    color: #72739f;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.1s ease-in-out;
+}
+
+.menu li a:before {
+    font-family: FontAwesome;
+    text-indent: 0em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+
+.menu li a.hom:before {
+    content: "\f015";
+}
+
+.menu li a.archive:before {
+    content: "\f187";
+}
+
+.menu li a.profile:before {
+    content: "\f007";
+}
+
+.menu li a.pages:before {
+    content: "\f15c";
+}
+
+.menu li a.overview:before {
+    content: "\f21d";
+}
+
+.menu li a.home:before {
+    content: "\f039";
+}
+
+.menu li a.photos:before {
+    content: "\f03e";
+}
+
+.menu li a.community:before {
+    content: "\f0c0";
+}
+
+.menu-bar li a:hover,
+.menu li a:hover,
+.menu li:first-child a {
+    background: #3b8d99;
+    color: #fff;
+}
+
+.menu-bar {
+    overflow: hidden;
+    left: 5em;
+    z-index: 5;
+    width: 0;
+    height: 0;
+    transition: all 0.1s ease-in-out;
+}
+
+.menu-bar li a {
+    display: block;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    color: #72739f;
+    text-decoration: none;
+    position: relative;
+    font-family: verdana;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.1s ease-in-out;
+}
+
+.menu-bar li:first-child a {
+    height: 5em;
+    background: #267fdd;
+    color: #fff;
+    line-height: 5
+}
+
+
+.para {
+    color: #033f72;
+    padding-left: 100px;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.open {
+    width: 10em;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    display: flex;
+    flex: 1;
+}
+
+/* upload form */
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type=text] {
+    padding: 7px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+
+form.example button {
+
+    width: 20%;
+    padding: 7px;
+    background: #FC466B;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    flex-flow: row;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+.form-flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+/* Post card */
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-left: 15%;
+    background: #DCDCDC;
+    padding-bottom: 23px;
+    height: 12vh;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.postcontainer {
+    padding: 28px 16px;
+    height: 1vh;
+}
+
+
+/* Feed Card */
+
+.feed {
+    margin-left: 14%;
+    margin-bottom: 9%;
+}
+
+.feed-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    /* 5px rounded corners */
+    padding: 4%;
+    background: #E0E0E0;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.comment-box {
+    padding: 2%;
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.input-field {
+    width: 250%;
+    padding: 10px;
+    outline: none;
+}
+
+.icon {
+    padding: 10px;
+    background: #FC466B;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.feed-card li {
+    padding: 2%;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.del::hover {
+    background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+
+
+
+
+/* friends block */
+
+.row {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.column {
+    float: left;
+    width: 26%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    margin-bottom: 1%;
+}
+
+.column:hover {
+    opacity: 0.47;
+    color: #3b8d99;
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+
+@media all and (max-width: 500px) {
+    .container {
+        margin-top: 100px;
+    }
+
+    .box-1 {
+        margin-top: 100px;
+    }
+
+
+    .menu {
+        height: 5em;
+        width: 100%;
+    }
+
+    .menu li {
+        display: inline-block;
+        float: left;
+    }
+
+    .menu-bar li a {
+        width: 100%;
+    }
+
+    .menu-bar {
+        width: 100%;
+        left: 0;
+        height: 0;
+    }
+
+    .open {
+        width: 100%;
+        height: auto;
+    }
+
+    .para {
+        padding-left: 5px;
+    }
+}
+
+@media screen and (max-height: 34em) {
+
+    .menu li,
+    .menu-bar {
+        font-size: 70%;
+    }
+
+}
+
+@media screen and (max-height: 34em) and (max-width: 500px) {
+    .menu {
+        height: 3.5em;
+    }
+
+}
