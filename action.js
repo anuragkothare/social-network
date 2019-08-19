@@ -1,93 +1,54 @@
-
-const form = document.querySelector('.comment');
-const ul = document.querySelector('.comment-list');
-const button = document.querySelector('.delete-comments');
-const input = document.getElementById('item');
-let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-
-const form2 = document.querySelector('.comment2');
-const ul2 = document.querySelector('.comment-list2');
-const button2 = document.querySelector('.delete-comments2');
-const input2 = document.getElementById('item2');
-let itemsArray2 = localStorage.getItem('items2') ? JSON.parse(localStorage.getItem('items2')) : [];
-
-
-
-localStorage.setItem('items', JSON.stringify(itemsArray));
-localStorage.setItem('items2', JSON.stringify(itemsArray2));
-
-const data = JSON.parse(localStorage.getItem('items'));
-const data2 = JSON.parse(localStorage.getItem('items2'));
-
-
-const liMaker = (text) => {
+const liMaker = (text, listElement) => {
     const li = document.createElement('li');
-    // console.log(li);
-
     li.textContent = text;
-    ul.appendChild(li);
+    listElement.appendChild(li);
 }
 
-const liMaker2 = (text) => {
-    const li = document.createElement('li');
-    // console.log(li);
-
-    li.textContent = text;
-    ul2.appendChild(li);
-}
-
-
-form.addEventListener('submit', function (e) {
+const addComment = (e) => {
     e.preventDefault();
-    itemsArray.push(input.value);
+    let form = e.target
+    let inputElement = form.getElementsByTagName('input')[0];
 
-    localStorage.setItem('items', JSON.stringify(itemsArray));
-    liMaker(input.value);
-    input.value = "";
-});
-
-form2.addEventListener('submit', function (e) {
-    e.preventDefault();
-    console.log(input2.value);
-    itemsArray2.push(input2.value);
-
-    localStorage.setItem('items2', JSON.stringify(itemsArray2));
-    liMaker2(input2.value);
-    input2.value = "";
-});
-
-// if (input.value) {
-//     data.forEach(item => {
-//         liMaker(item);
-//     })
-// } else if (input2.value) {
-//     data2.forEach(item => {
-//         liMaker2(item);
-//     })
-// }
-
-data.forEach(item => {
-    liMaker(item);
-});
-
-data2.forEach(item => {
-    liMaker2(item);
-});
-
-
-button.addEventListener('click', function () {
-
-    while (ul.firstChild) {
-        ul.removeChild(ul.firstChild);
-    }
-    itemsArray = [];
+    let commentArray= JSON.parse(localStorage.getItem(form.id));
+    commentArray.push(inputElement.value);
+    localStorage.setItem(form.id, JSON.stringify(commentArray));
     
-});
+    // Get ul element from form's parent ancestor element
+    let listElement = form.parentNode.parentNode.getElementsByTagName('ul')[0];
 
-// button2.addEventListener('click', function () {
-//     localStorage.clear();
-//     while (ul2.firstChild) {
-//         ul2.removeChild(ul2.firstChild);
-//     }
-//     itemsArray2 = [];
-// });
+    liMaker(inputElement.value, listElement);
+    inputElement.value =""
+}
+
+const clearComments = (e) =>{
+    e.preventDefault();
+    // remove li tags
+    let listElement = e.target.parentNode.getElementsByTagName('ul')[0];
+    while(listElement.firstChild) {
+        listElement.removeChild(listElement.firstChild)
+    }
+    // Delete from local storage
+    let form = e.target.parentNode.getElementsByTagName('form')[0];
+    localStorage.setItem(form.id, JSON.stringify([]));
+}
+
+
+let formArray = document.getElementsByClassName("comment-form");
+for( form of formArray) {
+    if(!localStorage.getItem(form.id)){
+        localStorage.setItem(form.id, JSON.stringify([]));
+    } else {
+        // Get ul element from form's parent ancestor element
+        let listElement = form.parentNode.parentNode.getElementsByTagName('ul')[0];
+        let commentsArray = JSON.parse(localStorage.getItem(form.id));
+        commentsArray.forEach(comment => {
+            liMaker(comment, listElement);
+        });
+    }
+    form.addEventListener('submit', addComment);
+}
+
+let clearCommentBtnArray = document.getElementsByClassName("delete-comments-btn")
+for( clearCommentBtn of clearCommentBtnArray) {
+    clearCommentBtn.addEventListener('click', clearComments)   
+}
